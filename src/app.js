@@ -1,7 +1,11 @@
-const logger = require('./classes/Logger')
-const database = require('./classes/Database')
+const createFile = require('./classes/File')
 
-logger.setConfig({appName: 'App -'})
+const anyFileInstance = createFile('any')
+const smallFileInstance = createFile('small')
+const mediumFileInstance = createFile('medium')
+const bigFileInstance = createFile('big')
 
-database.connect()
-logger.log('Running in port 3000')
+console.log(anyFileInstance);
+console.log(smallFileInstance);
+console.log(mediumFileInstance);
+console.log(bigFileInstance);
