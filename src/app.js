@@ -1,11 +1,16 @@
-const createFile = require('./classes/File')
+const MiddlewareManager = require('./configs/MiddlewareManager')
 
-const anyFileInstance = createFile('any')
-const smallFileInstance = createFile('small')
-const mediumFileInstance = createFile('medium')
-const bigFileInstance = createFile('big')
+const addCurrentDateMiddleware = require('./middlewares/AddCurrentDateMiddleware')
+const logDataMiddleware = require('./middlewares/LogDataMiddleware')
 
-console.log(anyFileInstance);
-console.log(smallFileInstance);
-console.log(mediumFileInstance);
-console.log(bigFileInstance);
+const middlewareManager = new MiddlewareManager()
+
+const defaultData = {
+  name: 'Leonardo',
+  age: 10
+}
+
+middlewareManager.use(addCurrentDateMiddleware)
+middlewareManager.use(logDataMiddleware)
+
+middlewareManager.process(defaultData)
